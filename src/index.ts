@@ -56,3 +56,11 @@ io.on('connection', (socket) => {
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 })
+
+if (process.env.SELF_PING_URL) {
+    setInterval(() => {
+        fetch(`${process.env.SELF_PING_URL}`)
+            .then(() => console.log('Self-ping sent to keep server warm.'))
+            .catch(err => console.error('Self-ping failed:', err));
+    }, 1000 * 60 * 5);
+}
