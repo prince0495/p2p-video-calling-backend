@@ -9,6 +9,8 @@ interface ServerToClientEvents {
   createAnswer: ({roomName, sdp}: {roomName: string, sdp: any}) => void;
   iceCandidateExchange: ({roomName, candidate}: {roomName: string, candidate: RTCIceCandidate}) => void;
   userLeft: () => void;
+    addNewRoom: (roomName: string) => void;
+
 }
 
 interface ClientToServerEvents {
@@ -18,6 +20,7 @@ interface ClientToServerEvents {
   createAnswer: ({roomName, sdp}: {roomName: string, sdp: any}) => void;
   iceCandidateExchange: ({roomName, candidate}: {roomName: string, candidate: RTCIceCandidate}) => void;
   leaveRoom: (roomName: string) => void;
+  newRoomCreated: (roomName: string) => void;
 
 }
 
